@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>数字展销平台-积分商城</title>
-    <link rel="stylesheet" href="lab4_08.css">
+    <link rel="stylesheet" href="lab5_08.css">
 </head> 
 <body> 
     <div class="container"> 
@@ -12,7 +12,7 @@
             <div class="header-content">
                 <div class="logo">数字展销平台</div>
                 <div class="user-info">
-                    <div class="user-info-item">欢迎，用户12345</div>
+                    <div class="user-info-item">登录/注册</div>
                     <div class="user-info-item points-display">积分：2,580</div>
                     <div class="user-info-item">
                         消息
@@ -462,6 +462,122 @@
             }
         }, 4000); // 每4秒自动切换
     </script>
+    <!-- 登录/注册面板 -->
+    <div class="login-signup-panel" id="login-signup-panel">
+        <div class="settings-content">
+            <div class="settings-header">
+                <h2>登录/注册</h2>
+                <button class="close-btn" id="close-login-signup">&times;</button>
+            </div>
+            <div class="settings-body">
+                <!-- 登录表单 -->
+                <div class="setting-group" id="login-form">
+                    <h3>用户登录</h3>
+                    <div class="setting-item">
+                        <span>用户名/手机号</span>
+                        <input type="text" class="select-box" placeholder="请输入用户名或手机号">
+                    </div>
+                    <div class="setting-item">
+                        <span>密码</span>
+                        <input type="password" class="select-box" placeholder="请输入密码">
+                    </div>
+                    <div class="setting-item">
+                        <span>记住登录</span>
+                        <div style="display: flex;  width: 25px;">
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <button class="save-btn" onclick="login()">登录</button>
+                    <div style="text-align: center; margin-top: 15px;">
+                        <a href="#" onclick="showRegisterForm()" style="color: #6ce07e; text-decoration: none;">还没有账号？立即注册</a>
+                    </div>
+                </div>
+                
+                <!-- 注册表单 -->
+                <div class="setting-group" id="register-form" style="display: none;">
+                    <h3>用户注册</h3>
+                    <div class="setting-item">
+                        <span>用户名</span>
+                        <input type="text" class="select-box" placeholder="请输入用户名">
+                    </div>
+                    <div class="setting-item">
+                        <span>手机号</span>
+                        <input type="text" class="select-box" placeholder="请输入手机号">
+                    </div>
+                    <div class="setting-item">
+                        <span>密码</span>
+                        <input type="password" class="select-box" placeholder="请输入密码">
+                    </div>
+                    <div class="setting-item">
+                        <span>确认密码</span>
+                        <input type="password" class="select-box" placeholder="请再次输入密码">
+                    </div>
+                    <div class="setting-item">
+                        <span>同意协议</span>
+                        <div style="width: 60px; display: flex; justify-content: flex-start;">
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <button class="save-btn" onclick="register()">注册</button>
+                    <div style="text-align: center; margin-top: 15px;">
+                        <a href="#" onclick="showLoginForm()" style="color: #6ce07e; text-decoration: none;">已有账号？立即登录</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+    // 显示登录/注册面板
+    function showLoginSignupPanel() {
+        document.getElementById('login-signup-panel').style.display = 'flex';
+        showLoginForm();
+    }
+    
+    // 关闭登录/注册面板
+    document.getElementById('close-login-signup').addEventListener('click', function() {
+        document.getElementById('login-signup-panel').style.display = 'none';
+    });
+    
+    // 点击面板外部关闭
+    document.getElementById('login-signup-panel').addEventListener('click', function(e) {
+        if (e.target === this) {
+            this.style.display = 'none';
+        }
+    });
+    
+    // 显示登录表单
+    function showLoginForm() {
+        document.getElementById('login-form').style.display = 'block';
+        document.getElementById('register-form').style.display = 'none';
+    }
+    
+    // 显示注册表单
+    function showRegisterForm() {
+        document.getElementById('login-form').style.display = 'none';
+        document.getElementById('register-form').style.display = 'block';
+    }
+    
+    // 登录功能
+    function login() {
+        alert('登录成功！');
+        document.getElementById('login-signup-panel').style.display = 'none';
+    }
+    
+    // 注册功能
+    function register() {
+        alert('注册成功！');
+        document.getElementById('login-signup-panel').style.display = 'none';
+    }
+    
+    // 给顶部的登录/注册按钮添加点击事件
+    document.querySelector('.user-info-item:first-child').addEventListener('click', showLoginSignupPanel);
+    </script>
 </body>
-
 </html>
